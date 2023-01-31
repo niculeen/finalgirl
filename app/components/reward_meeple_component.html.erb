@@ -1,0 +1,63 @@
+<div class="flex items-center justify-center relative font-card <%= @hidden %>" id="<%= @id %>" data-controller="dropdown reward">
+  <%= image_tag "meeple.png", class: "z-10 cursor-pointer w-20 print:w-12 mb-0 print:mb-0 mx-2 print:mx-1 opacity-25 hover:opacity-50", data: {
+    action: "click->dropdown#toggle"
+  } %>
+  <div data-target="reward.placeholder" class="cursor-pointer absolute z-10">
+    <%= image_tag "icon_reduce_horror.png", class: "reward h-12 print:h-8 hidden", data: {action: "click->dropdown#toggle", target: 'reward.reduceHorror'} %>
+    <%= image_tag "icon_reduce_horror_2.png", class: "reward h-12 print:h-8 hidden", data: {action: "click->dropdown#toggle", target: 'reward.reduceHorror2'} %>
+    <%= image_tag "icon_add_time.png", class: "reward h-12 print:h-8 hidden", data: {action: "click->dropdown#toggle", target: 'reward.addTime'} %>
+    <%= image_tag "icon_add_time_2.png", class: "reward h-12 print:h-8 hidden", data: {action: "click->dropdown#toggle", target: 'reward.addTime2'} %>
+    <%= image_tag "icon_heart.png", class: "reward h-12 print:h-8 hidden", data: {action: "click->dropdown#toggle", target: 'reward.addHeart'} %>
+    <%= image_tag "icon_heart_2.png", class: "reward h-12 print:h-8 hidden", data: {action: "click->dropdown#toggle", target: 'reward.addHeart2'} %>
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.cardAction">Take an action card (max 2 time)</p>
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.cardSearch">Take a Search Action Card</p>
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.cardImprovise">Take an Improvise Action Card</p>
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.cardTop">Take Any Top Item Card</p>
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.cardPlanning">Take the Planning Action card</p>
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.cardRest">Take the Long Rest Action card</p>
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.cardCost">Take a Cost 2 or less Action card</p>
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.cardMove1">Move 1 space</p>
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.cardMove2">Move up to 2 spaces</p>
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.cardGuard">Take Guard</p>    
+    <p class="mx-6 text-sm print:mx-4 text-center text-white leading-none reward hidden" data-action="click->dropdown#toggle" data-target="reward.freeText">Free text</p>    
+  </div>
+  <div class="absolute left-24 mt-2 w-56 rounded-md shadow-lg" style="top: <%= @top %>px;">
+    <div class="hidden rounded-md bg-gray-900 shadow-2xl relative z-50"
+      data-target="dropdown.menu reward.menu"
+      data-transition-enter="transition ease-out duration-100"
+      data-transition-enter-start="transform opacity-0 scale-95"
+      data-transition-enter-end="transform opacity-100 scale-100"
+      data-transition-leave="transition ease-in duration-75"
+      data-transition-leave-start="transform opacity-100 scale-100"
+      data-transition-leave-end="transform opacity-0 scale-95">
+      <div class="z-30 h-64 overflow-y-scroll bg-gradient-to-r from-red-50 to-red-100 p-8">
+        <div class="grid grid-cols-3 gap-4">
+          <div data-action="click->reward#select" data-reward-value="reduceHorror" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_reduce_horror.png" %></div>
+          <div data-action="click->reward#select" data-reward-value="reduceHorror2" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_reduce_horror_2.png" %></div>
+          <div data-action="click->reward#select" data-reward-value="addTime" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_add_time.png" %></div>
+          <div data-action="click->reward#select" data-reward-value="addTime2" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_add_time_2.png" %></div>
+          <div data-action="click->reward#select" data-reward-value="addHeart" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_heart.png" %></div>
+          <div data-action="click->reward#select" data-reward-value="addHeart2" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_heart_2.png" %></div>
+          <div data-action="click->reward#select" data-reward-value="cardAction" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold">Take an action card (max 2 time)</div>
+          <div data-action="click->reward#select" data-reward-value="cardSearch" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold">Take a Search Action Card</div>
+          <div data-action="click->reward#select" data-reward-value="cardImprovise" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold">Take an Improvise Action Card</div>
+          <div data-action="click->reward#select" data-reward-value="cardTop" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold">Take Any Top Item Card</div>
+          <div data-action="click->reward#select" data-reward-value="cardPlanning" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold">Take the Planning Action card</div>
+          <div data-action="click->reward#select" data-reward-value="cardRest" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold">Take the Long Rest Action card</div>
+          <div data-action="click->reward#select" data-reward-value="cardCost" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold">Take a Cost 2 or less Action card</div>
+          <div data-action="click->reward#select" data-reward-value="cardMove1" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold">Move 1 space</div>
+          <div data-action="click->reward#select" data-reward-value="cardMove2" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold">Move up to 2 spaces</div>
+          <div data-action="click->reward#select" data-reward-value="cardGuard" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold">Take Guard</div>
+          <div class="flex justify-between col-span-3">
+            <div data-action="keyup->reward#syncFreeText" contenteditable="" class="p-2 cursor-pointer rounded hover:bg-gray-800 col-span-3 text-white text-lg leading-none font-bold flex-grow w-4/5">Enter free text</div>
+            <button data-action="click->reward#select" data-target="reward.saveFreeText" data-reward-value="freeText" class="hidden w-1/5 text-green-500" style="position: relative; right: -21px;">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

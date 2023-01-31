@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Final Girl: Create a Custom Final Girl Card</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+    <%= javascript_include_tag 'https://unpkg.com/jquery@3/dist/jquery.min.js' %>
+    <%= javascript_include_tag 'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.min.js' %>
+    <%= stylesheet_link_tag 'https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.9/cropper.min.css' %>
+
+  </head>
+  <body data-controller="modal data">
+    
+    <%= yield %>
+
+    <script>
+
+      window.addEventListener('DOMContentLoaded', function () {
+
+        $('.open_terms').on('click', function(){
+          $('#terms_modal').removeClass('hidden');
+        });
+        
+        $('#close_terms').on('click', function(){
+          $('#terms_modal').addClass('hidden');
+        });
+
+        window.activeCardPhoto = 'front';
+        var initial_image_front = document.getElementById('initial_image_front');
+        var initial_image_back = document.getElementById('initial_image_back');
+        var crop_image = document.getElementById('crop_image');
+        var input_front = $('.input_front');
+        var input_back = $('.input_back')
+        var $progress = $('.progress');
+        var $progressBar = $('.progress-bar');
+        var $alert = $('.alert');
+        var $modal = $('#crop_modal');
+        var cropper;
+
+        $('#change_front').on('click', function(){
+          window.activeCardPhoto = 'front';
+        });
+
+        $('#change_back').on('click', function(){
+          window.activeCardPhoto = 'back';
+        });
+
+        input_front[0].addEventListener('change', function (e) {
+          var files = e.target.files;
+          var done = function (url) {
+            input_front.value = '';
+            crop_image.src = url;
+            $modal.removeClass('hidden');
+            cropper = new Cropper(crop_image, {
+              aspectRatio: 307 / 409,
+              viewMode: 3,
+            });
+          };
+          var reader;
+          var file;
+          var url;
+
+          if (files && files.length > 0) {
+            file = files[0];
+
+            if (URL) {
+              done(URL.createObjectURL(file));
+            } else if (FileReader) {
+              reader = new FileReader();
+              reader.onload = function (e) {
+                done(reader.result);
+              };
+              reader.readAsDataURL(file);
+            }
+          }
+        });
+
+        input_back[0].addEventListener('change', function (e) {
+          var files = e.target.files;
+          var done = function (url) {
+            input_back.value = '';
+            crop_image.src = url;
+            $modal.removeClass('hidden');
+            cropper = new Cropper(crop_image, {
+              aspectRatio: 307 / 409,
+              viewMode: 3,
+            });
+          };
+          var reader;
+          var file;
+          var url;
+
+          if (files && files.length > 0) {
+            file = files[0];
+
+            if (URL) {
+              done(URL.createObjectURL(file));
+            } else if (FileReader) {
+              reader = new FileReader();
+              reader.onload = function (e) {
+                done(reader.result);
+              };
+              reader.readAsDataURL(file);
+            }
+          }
+        });
+
+        var frontPosition, backPosition;
+
+        window.onbeforeprint = function(event){
+          
+          frontPosition = $(initial_image_front).position();
+          backPosition = $(initial_image_back).position();
+
+          if ( frontPosition.top > 0 ) {
+            $(initial_image_front).css({ top: frontPosition.top * 0.470588235 });
+          }
+          if ( frontPosition.top < 0 ) {
+            $(initial_image_front).css({ top: (-Math.abs(frontPosition.top) * 0.366863905) });
+          }
+          if ( frontPosition.left !== 0 ) {
+            $(initial_image_front).css({ left: frontPosition.left * 0.59 });
+          }
+
+          if ( backPosition.top > 0 ) {
+            $(initial_image_back).css({ top: backPosition.top * 0.470588235 });
+          }
+          if ( backPosition.top < 0 ) {
+            $(initial_image_back).css({ top: (-Math.abs(backPosition.top) * 0.366863905) });
+          }
+          if ( backPosition.left !== 0 ) {
+            $(initial_image_back).css({ left: backPosition.left * 0.59 });
+          }
+
+        };
+
+        window.onafterprint = function(event){
+          
+          $(initial_image_front).css({ top: frontPosition.top, left: frontPosition.left });
+          $(initial_image_back).css({ top: backPosition.top, left: backPosition.left });
+
+        };
+
+
+        document.getElementById('crop').addEventListener('click', function () {
+          var initialAvatarURL;
+          var canvas;
+
+          $modal.addClass('hidden');
+
+          if (cropper) {
+            canvas = cropper.getCroppedCanvas({
+              width: 307,
+              height: 409,
+            });
+
+            if (window.activeCardPhoto === 'front') {
+              initialAvatarURL = initial_image_front.src;
+              initial_image_front.src = canvas.toDataURL();
+            }
+
+            if (window.activeCardPhoto === 'back') {              
+              initialAvatarURL = initial_image_back.src;
+              initial_image_back.src = canvas.toDataURL();
+            }
+            // document.querySelectorAll('input[type=submit]')[0].click();
+          }
+
+          cropper.destroy();
+          cropper = null;
+
+        });
+
+      });
+
+      dragElement(document.getElementById("initial_image_front"));
+      dragElement(document.getElementById("initial_image_back"));
+
+      function dragElement(elmnt) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        elmnt.onmousedown = dragMouseDown;
+
+        function dragMouseDown(e) {
+          e = e || window.event;
+          e.preventDefault();
+          // get the mouse cursor position at startup:
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          document.onmouseup = closeDragElement;
+          // call a function whenever the cursor moves:
+          document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+          e = e || window.event;
+          e.preventDefault();
+          // calculate the new cursor position:
+          pos1 = pos3 - e.clientX;
+          pos2 = pos4 - e.clientY;
+          pos3 = e.clientX;
+          pos4 = e.clientY;
+          // set the element's new position:
+          elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+          elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+          // stop moving when mouse button is released:
+          document.onmouseup = null;
+          document.onmousemove = null;
+        }
+      }
+
+    </script>
+
+  </body>
+</html>

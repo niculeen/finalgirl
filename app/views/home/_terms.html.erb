@@ -1,0 +1,50 @@
+<div id="terms_modal" class="hidden fixed z-50 inset-0 overflow-y-auto">
+  <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <!--
+      Background overlay, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0"
+        To: "opacity-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100"
+        To: "opacity-0"
+    -->
+    <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    </div>
+
+    <!-- This element is to trick the browser into centering the modal contents. -->
+    <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+    <!--
+      Modal panel, show/hide based on modal state.
+
+      Entering: "ease-out duration-300"
+        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+        To: "opacity-100 translate-y-0 sm:scale-100"
+      Leaving: "ease-in duration-200"
+        From: "opacity-100 translate-y-0 sm:scale-100"
+        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+    -->
+    <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full sm:p-6" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
+      <div>
+        <p class="font-bold mb-6">Full Terms and Conditions</p>
+
+        <p class="mb-6">By uploading an image to makeyourownfinalgirl.vanrydergames.com you guarantee that you have read these Terms and Conditions for uploading images and that you agree to abide by all clauses within these Terms and Conditions.</p>
+
+        <p class="mb-6">By uploading an Image you guarantee that any people which are clearly identifiable have consented to have their likeness printed or displayed, or that you have full rights to use the Image in this manner and accept full responsibility for such use.</p>
+
+        <p class="mb-6">You must not upload photographs that contain objectionable content, including but not limited to nudity, violence, and other offensive, illegal or inappropriate images or videos.</p>
+
+        <p class="mb-6">Van Ryder Games makes no representations about the user's use of the uploaded Image(s) and created content. More specifically, Van Ryder Games has not obtained any releases covering the user's use of the Image(s) and Van Ryder Games does not represent that the user's use of the Image(s) will not infringe the rights of any third parties. The user shall indemnify Van Ryder Games from any claims, damages, liabilities, losses, or expenses (including reasonable attorneys' fees) that may arise out of the use, reproduction, or distribution of the created content and Image(s).</p>
+
+        <p class="mb-6">Nothing in this permission conveys any intellectual property rights or other interests to the created content, and the user may not reproduce, distribute, sell, or transfer all or part of the created content. No data is stored, but Van Ryder Games retains its own right to use any text without limit with respect to card names, abilities, effects or text of any kind used on the card, and by using the tool, the user releases their right to any and all rights to copyright such words or phrases as it pertains to Van Ryder Games and the Final Girl boardgame.</p>
+      </div>
+      <div class="mt-5 sm:mt-6">
+        <button type="button" id="close_terms" class="inline-flex justify-center w-full rounded-md border border-transparent shadow-sm px-4 py-2 bg-red text-base font-medium text-white hover:bg-red focus:outline-none sm:text-sm">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

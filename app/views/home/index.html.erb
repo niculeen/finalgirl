@@ -1,0 +1,17 @@
+<%= render 'heading' %>
+
+<div class="max-w-xl xl:max-w-6xl mx-auto mt-4 sm:mt-12 grid grid-cols-1 xl:grid-cols-2 gap-4 mt-8 mb-12">
+  <%= render 'front' %>
+  <%= render 'back' %>
+</div>
+
+<div class="w-full mt-4 mb-12 text-center print-hidden">
+  <button type="button"  onclick="window.print();return false;" class="transform transition-transform hover:scale-150 -rotate-2 hover:-rotate-8 leading-none text-center font-head text-xl opacity-80 hover:opacity-100 inline-flex items-center px-8 pt-2 pb-3 border border-transparent text-xl font-medium rounded-md shadow-sm text-white bg-red hover:bg-red focus:outline-none">
+    PRINT
+  </button>
+</div>
+
+<p class="mx-auto w-2/3 text-center text-gray-400 leading-tight text-xs mb-12 print-hidden">The Final Girl boardgame is copyright © Van Ryder Games. By using this tool, you are agreeing to our <a href="javascript:void(0);" class="text-red open_terms">Terms and conditions</a>. The Final Girl board game is not affiliated with any movie, book, comic, or other media of any kind of the same name or otherwise.</p>
+
+<%= render 'crop' %>
+<%= render 'terms' %>

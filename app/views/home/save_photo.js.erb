@@ -1,0 +1,5 @@
+var images = document.querySelectorAll('.card__image');
+
+images.forEach(image => {
+  image.setAttribute('src', '<%= url_for(@card.photo) %>');
+});

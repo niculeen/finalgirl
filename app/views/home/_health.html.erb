@@ -1,0 +1,6 @@
+<div class="flex items-center relative">
+  <form class="z-20" data-target="data.form" data-action="submit->data#submit">
+    <input data-target="data.health" data-action="keyup->data#syncHealth" type="text" class="w-20 print:w-12 leading-6 bg-transparent font-head text-white text-5xl uppercase focus:outline-none ml-2 print:text-2xl" value="6">
+  </form>
+  <%= image_tag "icon_heart.png", class: "icon__health" %>
+</div>

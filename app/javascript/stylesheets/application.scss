@@ -1,0 +1,134 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+
+* {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+}
+
+@font-face {
+    font-family: 'dropdead';
+    src: url('../fonts/Hanoded-DropDeadGorgeous.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'futura';
+    src: url('../fonts/FuturaStd-Condensed.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'futurabold';
+    src: url('../fonts/FuturaStd-CondensedBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-image: url('../images/grunge_wall_light.png');
+}
+
+.bg-wall-light {
+    background-image: url('../images/grunge_wall_light.png');
+}
+
+.bg-wall-dark {
+    background-image: url('../images/grunge_wall.png');
+}
+
+.card {
+    @apply overflow-hidden relative rounded-lg;
+    height: 408px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 1);
+}
+
+.card.front {
+    background-image: url('../images/bg_front.png');
+}
+
+.card.back {
+    background-image: url('../images/bg_back.png');
+}
+
+.card__image {
+    filter: drop-shadow(-10px 40px 35px #000);
+    // &:hover {
+    //     filter: drop-shadow(-10px 40px 35px #FC0100);
+    // }
+}
+
+.icon__health {
+    position: absolute; 
+    width: 50px; 
+    top: 11px; 
+    left: 35px; 
+    z-index: 0;
+}
+
+.card__name {
+
+}
+
+.ability {
+    bottom: 50px;
+    height: 260px;
+}
+
+.redline {
+    position: absolute;
+    max-width: 450px;
+    top: 67px;
+    right: 0;
+    opacity: 0.7;
+}
+
+@media print {
+    .print-hidden {
+        display: none !important;
+        visibility: hidden !important;
+    }
+    .card {
+        box-shadow: none;
+        //575
+        width: 336px !important;
+        // width: 252px !important;
+        
+        //408px
+        height: 238px !important;
+        // height: 155px !important;
+    }
+    .card__image {
+        width: 178px !important;
+        height: 238px !important; 
+    }
+    .card.front,
+    .card.back {
+        background-size: 336px 238px;
+    }
+    .icon__health {
+        width: 30px;
+        top: 7px;
+        left: 26px;
+    }
+    .reward {
+        font-size: 9px !important;
+        line-height: 1.2 !important;
+    }
+    .redline {
+        max-width: 248px;
+        top: 42px;
+    }
+    #back_ability {
+        font-size: 15px !important;
+        line-height: 1.2;
+    }
+    #back_victims  {
+        font-size: 12px !important;
+        line-height: 1;
+    }
+}
+
+@import "tailwindcss/utilities";

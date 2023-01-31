@@ -1,0 +1,29 @@
+<div class="flex items-center justify-center relative pt-4" data-controller="dropdown reward">
+  <div data-target="reward.placeholder" class="cursor-pointer z-10">
+    <%= image_tag "icon_reduce_horror.png", class: "reward h-12", data: {action: "click->dropdown#toggle", target: 'reward.reduceHorror'} %>
+    <%= image_tag "icon_reduce_horror_2.png", class: "reward h-12 hidden", data: {action: "click->dropdown#toggle", target: 'reward.reduceHorror2'} %>
+    <%= image_tag "icon_add_time_2.png", class: "reward h-12 hidden", data: {action: "click->dropdown#toggle", target: 'reward.addTime2'} %>
+    <%= image_tag "icon_heart.png", class: "reward h-12 hidden", data: {action: "click->dropdown#toggle", target: 'reward.addHeart'} %>
+    <%= image_tag "icon_heart_2.png", class: "reward h-12 hidden", data: {action: "click->dropdown#toggle", target: 'reward.addHeart2'} %> 
+  </div>
+  <div class="absolute left-24 mt-2 w-56 rounded-md shadow-lg">
+    <div class="hidden rounded-md bg-gray-900 shadow-2xl relative z-50"
+      data-target="dropdown.menu reward.menu"
+      data-transition-enter="transition ease-out duration-100"
+      data-transition-enter-start="transform opacity-0 scale-95"
+      data-transition-enter-end="transform opacity-100 scale-100"
+      data-transition-leave="transition ease-in duration-75"
+      data-transition-leave-start="transform opacity-100 scale-100"
+      data-transition-leave-end="transform opacity-0 scale-95">
+      <div class="h-64 overflow-y-scroll bg-gradient-to-r from-red-50 to-red-100 p-8">
+        <div class="grid grid-cols-3 gap-4">
+          <div data-action="click->reward#ultimate" data-reward-value="reduceHorror" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_reduce_horror.png" %></div>
+          <div data-action="click->reward#ultimate" data-reward-value="reduceHorror2" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_reduce_horror_2.png" %></div>
+          <div data-action="click->reward#ultimate" data-reward-value="addTime2" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_add_time_2.png" %></div>
+          <div data-action="click->reward#ultimate" data-reward-value="addHeart" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_heart.png" %></div>
+          <div data-action="click->reward#ultimate" data-reward-value="addHeart2" class="cursor-pointer rounded hover:bg-gray-800 h-12 flex items-center justify-center"><%= image_tag "icon_heart_2.png" %></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
